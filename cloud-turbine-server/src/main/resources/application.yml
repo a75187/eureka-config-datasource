@@ -1,0 +1,10 @@
+turbine:
+  #turbine.appConfig is a list of eureka serviceIds that turbine will use to lookup instances
+  appConfig: web-demo,platform-erp
+  #instanceUrlSuffix: :9091/hystrix.stream
+  aggregator:
+    #The cluster name,values returned from eureka are uppercase
+    clusterConfig: mshz
+  clusterNameExpression: metadata['cluster']
+  #combineHostPort: true
+  instanceUrlSuffix: /platform-erp-api/hystrix.stream

@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <name>cloud-dependencies</name>
+    <groupId>com.mshz.cloud</groupId>
+    <artifactId>cloud-dependencies</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>1.5.1.RELEASE</version>
+    </parent>
+
+    <dependencies>
+        <dependency>
+            <groupId>commons-beanutils</groupId>
+            <artifactId>commons-beanutils</artifactId>
+            <version>${commons-beanutils}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>commons-logging</artifactId>
+                    <groupId>commons-logging</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${guava_version}</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+            <version>${commons_lang_version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>${fastjson_version}</version>
+        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.springframework.boot</groupId>-->
+            <!--<artifactId>spring-boot-devtools</artifactId>-->
+            <!--<optional>true</optional>-->
+        <!--</dependency>-->
+    </dependencies>
+
+    <build>
+        <plugins>
+            <!-- 指定JDK版本和编码 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.3</version>
+                <configuration>
+                    <compilerArgument>-parameters</compilerArgument>
+                    <source>${maven.compiler.source}</source>
+                    <target>${maven.compiler.target}</target>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>3.0.0</version>
+                <configuration>
+                    <attach>true</attach>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>Camden.SR5</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-netflix</artifactId>
+                <version>1.2.4.RELEASE</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>com.mshz.common</groupId>
+                <artifactId>common-base</artifactId>
+                <version>${mshz_framework_version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.mshz.web</groupId>
+                <artifactId>web-base</artifactId>
+                <version>${mshz_framework_version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.mshz.service</groupId>
+                <artifactId>service-base</artifactId>
+                <version>${mshz_framework_version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.mshz.service</groupId>
+                <artifactId>apilist-base</artifactId>
+                <version>${mshz_framework_version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.mshz.service</groupId>
+                <artifactId>dubbo-base</artifactId>
+                <version>${mshz_framework_version}</version>
+            </dependency>
+            <!-- common-base -->
+            <dependency>
+                <groupId>com.belerweb</groupId>
+                <artifactId>pinyin4j</artifactId>
+                <version>${pinyin4j_version}</version>
+            </dependency>
+            <dependency>
+                <groupId>net.sf.dozer</groupId>
+                <artifactId>dozer</artifactId>
+                <version>${dozer_version}</version>
+            </dependency>
+
+            <!-- service-base -->
+            <dependency>
+                <groupId>org.mybatis</groupId>
+                <artifactId>mybatis</artifactId>
+                <version>${mybatis_version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mybatis</groupId>
+                <artifactId>mybatis-spring</artifactId>
+                <version>${mybatis_spring_version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.batch</groupId>
+                <artifactId>spring-batch-infrastructure</artifactId>
+                <version>${spring_batch_infrastructure_version}</version>
+            </dependency>
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql_version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid</artifactId>
+                <version>${druid_version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.solr</groupId>
+                <artifactId>solr-core</artifactId>
+                <version>${apache_solr_version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.data</groupId>
+                <artifactId>spring-data-solr</artifactId>
+                <version>${spring_data_solr_version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.solr</groupId>
+                <artifactId>solr-solrj</artifactId>
+                <version>${apache_solr_version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.activemq</groupId>
+                <artifactId>activemq-broker</artifactId>
+                <version>${activemq_version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.activemq</groupId>
+                <artifactId>activemq-spring</artifactId>
+                <version>${activemq_version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.activemq</groupId>
+                <artifactId>activemq-client</artifactId>
+                <version>${activemq_version}</version>
+            </dependency>
+
+            <!-- -dubbo-base -->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>dubbo</artifactId>
+                <version>${dubbo_version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.sgroschupf</groupId>
+                <artifactId>zkclient</artifactId>
+                <version>${zkclient_version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.zookeeper</groupId>
+                <artifactId>zookeeper</artifactId>
+                <version>${zookeeper_version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-core</artifactId>
+                <version>${hibernate_core_version}</version>
+            </dependency>
+
+            <!-- web-base -->
+            <dependency>
+                <groupId>javax.mail</groupId>
+                <artifactId>mail</artifactId>
+                <version>${javax_mail_version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-validator</artifactId>
+                <version>${hibernate_validator_version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-pool2</artifactId>
+                <version>${commons_pool2_version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.poi</groupId>
+                <artifactId>poi-ooxml</artifactId>
+                <version>${poi_ooxml_version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger2</artifactId>
+                <version>${springfox_swagger_version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpclient</artifactId>
+                <version>${httpcomponents_version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.qfang</groupId>
+                <artifactId>imagecenter-toolkit</artifactId>
+                <version>${qfang_imagecenter_toolkit_version}</version>
+            </dependency>
+            <!-- component -->
+            <dependency>
+                <groupId>org.apache.velocity</groupId>
+                <artifactId>velocity</artifactId>
+                <version>${velocity_version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-httpclient</groupId>
+                <artifactId>commons-httpclient</artifactId>
+                <version>${commons_httpclient_version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-codec</groupId>
+                <artifactId>commons-codec</artifactId>
+                <version>${commons_codec_version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-configuration</groupId>
+                <artifactId>commons-configuration</artifactId>
+                <version>${commons_configuration_version}</version>
+            </dependency>
+            <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>javax.servlet-api</artifactId>
+                <version>${servlet_api_version}</version>
+            </dependency>
+            <dependency>
+                <groupId>dom4j</groupId>
+                <artifactId>dom4j</artifactId>
+                <version>${dom4j_version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.thoughtworks.xstream</groupId>
+                <artifactId>xstream</artifactId>
+                <version>${com_thoughtworks_xstream_version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <properties>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <java.version>1.8</java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+        <fastjson_version>1.2.28</fastjson_version>
+        <mshz_framework_version>0.0.1-SNAPSHOT</mshz_framework_version>
+
+        <!-- common-base -->
+        <dozer_version>5.5.1</dozer_version>
+        <pinyin4j_version>2.5.1</pinyin4j_version>
+
+        <!-- service-base -->
+        <mysql_version>5.1.36</mysql_version>
+        <mybatis_version>3.3.0</mybatis_version>
+        <mybatis_spring_version>1.2.3</mybatis_spring_version>
+        <druid_version>1.0.15</druid_version>
+        <spring_batch_infrastructure_version>3.0.7.RELEASE</spring_batch_infrastructure_version>
+        <commons-beanutils>1.9.2</commons-beanutils>
+        <guava_version>18.0</guava_version>
+        <commons_lang_version>2.6</commons_lang_version>
+        <hibernate_core_version>5.2.9.Final</hibernate_core_version>
+        <spring_data_solr_version>1.3.4.RELEASE</spring_data_solr_version>
+        <apache_solr_version>4.7.2</apache_solr_version>
+        <activemq_version>5.12.3</activemq_version>
+
+        <!-- dubbo-base -->
+        <dubbo_version>2.8.2.1</dubbo_version>
+        <zkclient_version>0.1</zkclient_version>
+        <zookeeper_version>3.4.6</zookeeper_version>
+
+        <!-- web-base -->
+        <javax_mail_version>1.4.7</javax_mail_version>
+        <hibernate_validator_version>5.3.6.Final</hibernate_validator_version>
+        <aspectj_version>1.7.4</aspectj_version>
+        <commons_pool2_version>2.4.2</commons_pool2_version>
+        <poi_ooxml_version>3.9</poi_ooxml_version>
+        <springfox_swagger_version>2.7.0</springfox_swagger_version>
+        <httpcomponents_version>4.5.2</httpcomponents_version>
+        <qfang_imagecenter_toolkit_version>1.1.1.3-SNAPSHOT</qfang_imagecenter_toolkit_version>
+
+        <!-- component -->
+        <velocity_version>1.7</velocity_version>
+        <commons_httpclient_version>3.1</commons_httpclient_version>
+        <commons_configuration_version>1.6</commons_configuration_version>
+        <commons_codec_version>1.10</commons_codec_version>
+        <servlet_api_version>3.1.0</servlet_api_version>
+        <dom4j_version>1.6.1</dom4j_version>
+        <com_thoughtworks_xstream_version>1.4.7</com_thoughtworks_xstream_version>
+    </properties>
+
+    <!-- 配置maven私服地址 -->
+    <distributionManagement>
+        <repository>
+            <id>nexus-releases</id>
+            <name>Nexus Release Repository</name>
+            <url>http://192.168.0.195:8081/nexus/content/repositories/releases</url>
+        </repository>
+        <snapshotRepository>
+            <id>nexus-snapshots</id>
+            <name>Nexus Snapshot Repository</name>
+            <url>http://192.168.0.195:8081/nexus/content/repositories/snapshots</url>
+        </snapshotRepository>
+    </distributionManagement>
+</project>

@@ -1,0 +1,36 @@
+server:
+  port: 51201
+
+management:
+  security:
+    enabled: false
+
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/a75187/systemConfig.git
+          search-paths: /config-repo
+          username: a75187-public
+          password: a75187-public
+
+eureka:
+  instance:
+      leaseRenewalIntervalInSeconds: 10
+      statusPageUrlPath: /info
+      healthCheckUrlPath: /health
+      prefer-ip-address: true
+      instance-id: ${spring.cloud.client.ipAddress}:${server.port}
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:80/eureka/
+
+
+logging:
+  level:
+    com.netflix.discovery: 'OFF'
+    org.springframework.cloud: 'INFO'
+

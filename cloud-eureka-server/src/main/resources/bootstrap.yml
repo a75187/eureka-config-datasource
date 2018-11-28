@@ -1,0 +1,42 @@
+server:
+  port: 80
+spring:
+  application:
+    name: eureka-server
+
+logging:
+  level:
+    com.netflix.discovery: 'OFF'
+    org.springframework.cloud: 'INFO'
+
+#eureka:
+#  environment: mshz
+#  instance:
+#    leaseRenewalIntervalInSeconds: 10
+#    prefer-ip-address: true
+#    instance-id: ${spring.cloud.client.ipAddress}:${server.port}
+    #nonSecurePort: 80
+ # client:
+ #   serviceUrl:
+ #     defaultZone: http://mshz.eureka1:51101/eureka/,http://mshz.eureka2:51102/eureka/
+---
+spring:
+  profiles: eureka1
+server:
+  port: 51101
+eureka:
+  instance:
+    hostname: mshz.eureka1
+---
+spring:
+  profiles: eureka2
+server:
+  port: 51102
+eureka:
+  instance:
+    hostname: mshz.eureka2
+  client:
+    registerWithEureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://localhost:80/eureka

@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: zuul-server
+
+server:
+  port: 51211
+
+logging:
+  level:
+    com.netflix.discovery: 'OFF'
+    org.springframework.cloud: 'INFO'
+
+eureka:
+  instance:
+    leaseRenewalIntervalInSeconds: 10
+    statusPageUrlPath: /info
+    healthCheckUrlPath: /health
+  client:
+    serviceUrl:
+      defaultZone: http://mshz.eureka1:51101/eureka/,http://mshz.eureka2:51102/eureka/

@@ -1,0 +1,6 @@
+zuul:
+    #ignoredServices: '*'
+    routes:
+      users:
+        path: /demo/**
+        serviceId: biz-service-demo
