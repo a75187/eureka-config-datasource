@@ -1,7 +1,15 @@
 spring:
   application:
     name: turbine-server
-
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        service-id: config-server
+      name: service-room
+      label: master
+  profiles:
+    active: dev
 server:
   port: 51221
 
@@ -15,6 +23,25 @@ eureka:
     leaseRenewalIntervalInSeconds: 10
     statusPageUrlPath: /info
     healthCheckUrlPath: /health
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ipAddress}:${server.port}
   client:
     serviceUrl:
-      defaultZone: http://mshz.eureka1:51101/eureka/,http://mshz.eureka2:51102/eureka/
+      defaultZone: http://localhost:80/eureka/
+
+
+
+---
+spring:
+  profiles: dev
+
+  cloud:
+    config:
+      profile: dev
+---
+spring:
+  profiles: pro
+
+  cloud:
+    config:
+      profile: pro
