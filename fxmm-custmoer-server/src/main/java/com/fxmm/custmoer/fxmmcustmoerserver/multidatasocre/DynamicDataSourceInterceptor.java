@@ -74,8 +74,7 @@ public class DynamicDataSourceInterceptor implements Interceptor {
             master = false;
         }
         if (synchronizationActive != true && !master) {
-            //当前的是有事务的====================Object[0]=org.apache.ibatis.mapping.MappedStatement@c028cc
-            logger.info("当前不是 有事务的或使用了主库注解");
+            logger.info("当前不是 有事务的或使用了主库注解 的方法");
             //读方法,说明是 select 查询操作
             if (mappedStatement.getSqlCommandType().equals(SqlCommandType.SELECT)) {
                 //如果selectKey 为自增id查询主键（select last_insert_id（）方法），使用主库，这个查询是自增主键的一个查询
