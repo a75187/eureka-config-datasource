@@ -1,6 +1,7 @@
 package com.fxmm.custmoer.fxmmcustmoerserver.config;
 
 
+import com.fxmm.custmoer.fxmmcustmoerserver.intercept.ResultOutInterceptor;
 import com.fxmm.custmoer.fxmmcustmoerserver.multidatasocre.DynamicDataSource;
 import com.fxmm.custmoer.fxmmcustmoerserver.multidatasocre.DynamicDataSourceInterceptor;
 import com.zaxxer.hikari.HikariDataSource;
@@ -14,8 +15,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.core.io.support.ResourcePatternResolver;
 
-import javax.sql.DataSource;
-import java.sql.Connection;
+
 import java.util.HashMap;
 
 
@@ -50,9 +50,11 @@ public class DataSourceConfig {
     public SqlSessionFactory mysqlSqlSessionFactory() throws Exception {
         SqlSessionFactoryBean bean = new SqlSessionFactoryBean();
         VFS.addImplClass(SpringBootVFS.class);
-        Interceptor[] plugins = new Interceptor[1];
+        Interceptor[] plugins = new Interceptor[2];
         DynamicDataSourceInterceptor multiDataSourceInterceptor = new DynamicDataSourceInterceptor();
+        ResultOutInterceptor resultOutInterceptor = new ResultOutInterceptor();
         plugins[0] = multiDataSourceInterceptor;
+        plugins[1] =resultOutInterceptor;
         bean.setPlugins(plugins);
         bean.setDataSource(dynamicDataSource());
         ResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();

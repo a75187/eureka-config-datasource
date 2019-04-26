@@ -20,8 +20,6 @@ import org.apache.ibatis.session.RowBounds;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.transaction.support.TransactionSynchronizationManager;
-
-import java.lang.annotation.Annotation;
 import java.util.Locale;
 import java.util.Properties;
 
@@ -36,6 +34,7 @@ import java.util.Properties;
 //@Intercepts标记了这是一个Interceptor，然后在@Intercepts中定义了两个@Signature，即两个拦截点。第一个@Signature我们定义了该Interceptor将拦截Executor接口中参数类型
 // 为MappedStatement、Object、RowBounds和ResultHandler的query方法；第二个@Signature我们定义了该Interceptor将拦截StatementHandler中参数类型为Connection的prepare方法。
 //   只要拦截了update和query即可，所有的增删改查都会封装在update和query中
+//Signature 拦截类 中的xx方法 方法中的xx参数  然后在intercept的invocation args方法就是该方法的参数
 @Intercepts({@Signature(type = Executor.class, method = "update", args = {MappedStatement.class, Object.class}),
         @Signature(type = Executor.class, method = "query", args = {MappedStatement.class, Object.class, RowBounds.class, ResultHandler.class})})
 public class DynamicDataSourceInterceptor implements Interceptor {
@@ -134,7 +133,7 @@ public class DynamicDataSourceInterceptor implements Interceptor {
 
     /**
      * 类初始化的时候做一些操作
-     *
+     *真实
      * @param properties
      */
 
