@@ -1,9 +1,9 @@
 package com.fxmm.custmoer.fxmmcustmoerserver.service;
 
+import com.fxmm.custmoer.fxmmcustmoerserver.api.aaa;
 import com.fxmm.custmoer.fxmmcustmoerserver.bean.UserBase;
 import com.fxmm.custmoer.fxmmcustmoerserver.dao.CustomerDao;
 import com.fxmm.custmoer.fxmmcustmoerserver.multidatasocre.UseMasterDb;
-
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,12 +19,17 @@ import java.util.List;
  * @Version: 1.0
  */
 @Service
-public class CustomerService {
+public class CustomerService  {
     @Resource
     private CustomerDao customerDao;
 
+    @Resource
+    private aaa aaa;
+
+
     @UseMasterDb
     public UserBase queryUserById(String id) {
+        System.out.println(aaa.aapp+"Service  ");
         return customerDao.queryUserById(id);
     }
 
@@ -39,5 +44,9 @@ public class CustomerService {
 
     public List<UserBase> queryUserList() {
         return customerDao.queryUserList();
+    }
+
+    public CustomerService() {
+        System.out.println("CustomerService+CustomerService init");
     }
 }

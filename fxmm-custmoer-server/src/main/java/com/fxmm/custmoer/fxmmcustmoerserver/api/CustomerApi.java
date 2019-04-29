@@ -20,6 +20,9 @@ public class CustomerApi {
     @Resource
     private CustomerService customerService;
 
+    @Resource
+    private aaa aaa;
+
     @RequestMapping(value = "/userInfo", method = RequestMethod.GET)
     public UserBase queryUserInfo(String id) {
         UserBase userBase = customerService.queryUserById(id);
@@ -36,5 +39,9 @@ public class CustomerApi {
     public Boolean addUser(String name,Integer age) {
         customerService.addUser(name,age);
         return true;
+    }
+
+    public CustomerApi() {
+        System.out.println("CustomerApi++你是也是你好不发生+CustomerApi");
     }
 }
