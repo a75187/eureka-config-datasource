@@ -342,7 +342,7 @@
         <commons_codec_version>1.10</commons_codec_version>
         <servlet_api_version>3.1.0</servlet_api_version>
         <dom4j_version>1.6.1</dom4j_version>
-        <com_thoughtworks_xstream_version>1.4.7</com_thoughtworks_xstream_version>
+        <com_thoughtworks_xstream_version>1.4.17</com_thoughtworks_xstream_version>
     </properties>
 
     <!-- 配置maven私服地址 -->
