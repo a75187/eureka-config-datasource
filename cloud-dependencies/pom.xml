@@ -315,7 +315,7 @@
         <commons-beanutils>1.9.2</commons-beanutils>
         <guava_version>18.0</guava_version>
         <commons_lang_version>2.6</commons_lang_version>
-        <hibernate_core_version>5.2.9.Final</hibernate_core_version>
+        <hibernate_core_version>5.4.24.Final</hibernate_core_version>
         <spring_data_solr_version>1.3.4.RELEASE</spring_data_solr_version>
         <apache_solr_version>4.7.2</apache_solr_version>
         <activemq_version>5.12.3</activemq_version>
